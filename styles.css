@@ -76,4 +76,58 @@ button:hover {
     margin-top: 30px;
     border-top: 2px solid #ff00ff;
     padding-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .construction-gif {
+        height: 30px;
+        margin: 0 10px;
+    }
+
+    canvas {
+        height: 300px;
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        padding: 15px 20px;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .guestbook input,
+    .guestbook textarea {
+        font-size: 16px; 
+        padding: 15px;
+    }
+
+    .drawing-board,
+    .guestbook,
+    .about-me {
+        margin: 30px 0;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    canvas {
+        touch-action: none;
+    }
 } 
