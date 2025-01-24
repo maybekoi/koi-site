@@ -107,13 +107,24 @@ document.getElementById('messageForm').addEventListener('submit', async (e) => {
     }
 });
 
+function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    drawBackground(); 
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
 function handleTouchStart(e) {
     e.preventDefault();
     isDrawing = true;
     const touch = e.touches[0];
     const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
     
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -125,8 +136,10 @@ function handleTouchMove(e) {
     
     const touch = e.touches[0];
     const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (touch.clientX - rect.left) * scaleX;
+    const y = (touch.clientY - rect.top) * scaleY;
     
     ctx.lineWidth = brushSize.value;
     ctx.lineCap = 'round';
